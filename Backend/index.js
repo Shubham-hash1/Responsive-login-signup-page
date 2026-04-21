@@ -36,12 +36,15 @@ require('dotenv').config();
 require('./Models/db');
 
 const AuthRouter = require('./Routes/AuthRouter');
+const ProductRouter = require('./Routes/ProductRouter')
 
 const PORT = process.env.PORT || 8080;
 
 // middleware
 app.use(express.json()); // ✅ use this
 app.use(cors());
+app.use('/auth', AuthRouter);
+app.use('/product', ProductRouter);
 
 // routes
 app.use('/auth', AuthRouter);
